@@ -2,10 +2,10 @@ import React from 'react'
 import { useTodo } from '../Contexts/TodoContext'
 import { useState } from 'react'
 
-function TodoItem() {
+function TodoItem({todo}) {
 
     const [isTodoEditable, setIsTodoEditable] = useState(false)
-    const [todoMsg, setTodoMsg] = useState(todoMsg.todo)
+    const [todoMsg, setTodoMsg] = useState(todo.todo)
     const {updateTodo, deleteTodo, toggleComplete} = useTodo()
 
     const editTodo = () => {
@@ -19,7 +19,7 @@ function TodoItem() {
 
   return (
     <div
-    className={`flex border border-black/10 rounded-lg px-3 py-1.5 gap-x-3 shadow-5m shadow-white/50 duration-300 text-black ${todo.toggleCompleted ? "bg-[#c6e9a7]" : "bg-[#ccbed7]"}`}
+    className={`flex border border-black/10 rounded-lg px-3 py-1.5 gap-x-3 shadow-5m shadow-white/50 duration-300 text-black ${todo.completed ? "bg-[#c6e9a7]" : "bg-[#ccbed7]"}`}
     >
         <input type="checkbox"
         className='cursor-pointer'
